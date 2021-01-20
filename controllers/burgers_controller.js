@@ -7,7 +7,9 @@ var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", async function(req, res) {
-  const result = await burger.all()
+  let result = await burger.all();
+  console.log(result);
+  result = result.map(v => Object.assign({}, v));
   let resultObj = {
     burgers: result
   };
