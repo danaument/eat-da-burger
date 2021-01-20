@@ -40,17 +40,16 @@ function objToSql(ob) {
 }
 
 var orm = {
-    all: function(tableInput, cb) {
-      var queryString = "SELECT * FROM " + tableInput + ";";
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-        cb(result);
-      });
+    all: async function(tableInput) {
+      let queryString = `SELECT * FROM ${tableInput};`;
+      try {
+        return connection.query(queryString);
+      } catch (error) {
+        console.log(error);
+      };
     },
-    create: function(table, cols, vals, cb) {
-      var queryString = "INSERT INTO " + table;
+    create: async function(table, cols, vals) {
+      let queryString = "INSERT INTO " + table;
   
       queryString += " (";
       queryString += cols.toString();
@@ -60,18 +59,15 @@ var orm = {
       queryString += ") ";
   
       console.log(queryString);
-  
-      connection.query(queryString, vals, function(err, result) {
-        if (err) {
-          throw err;
-        }
-  
-        cb(result);
-      });
+      try {
+        return connection.query(queryString, vals);
+      } catch (error) {
+        console.log(error);
+      };
     },
     // An example of objColVals would be {name: panther, sleepy: true}
-    update: function(table, objColVals, condition, cb) {
-      var queryString = "UPDATE " + table;
+    update: async function(table, objColVals, condition) {
+      let queryString = "UPDATE " + table;
   
       queryString += " SET ";
       queryString += objToSql(objColVals);
@@ -79,29 +75,23 @@ var orm = {
       queryString += condition;
   
       console.log(queryString);
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-  
-        cb(result);
-      });
+      try {
+        return connection.query(queryString);
+      } catch (error) {
+        console.log(error);
+      };
     },
-    delete: function(table, condition, cb) {
-      var queryString = "DELETE FROM " + table;
+    delete: async function(table, condition) {
+      let queryString = "DELETE FROM " + table;
       queryString += " WHERE ";
       queryString += condition;
-  
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-  
-        cb(result);
-      });
+      try {
+        return connection.query(queryString);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   
-  // Export the orm object for the model (cat.js).
-  module.exports = orm;
-  
+// Export the orm object for the model (cat.js).
+module.exports = orm;
