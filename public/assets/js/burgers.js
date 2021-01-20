@@ -2,8 +2,7 @@
 $(function () {
   $(".devour").on("click", function (event) {
         var id = $(this).data("id");
-        var newDevoured = $(this).data("newdevoured");
-
+        
         var newDevoured = {
             id: id,
         };
@@ -11,7 +10,7 @@ $(function () {
         // Send the PUT request.
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: newDevoured,
+            data: newDevoured,  //the body of the put never gets handled, but I put it in here for kicks
         }).then(function () {
             console.log("changed devoured to", newDevoured);
             // Reload the page to get the updated list
