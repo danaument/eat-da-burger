@@ -17,16 +17,11 @@ router.get("/", async function(req, res) {
   res.render("index", resultObj);
 });
 
-// router.post("/api/burgers", async function(req, res) {
-//   burger.create([
-//     "name", "sleepy"
-//   ], [
-//     req.body.name, req.body.sleepy
-//   ], function(result) {
-//     // Send back the ID of the new quote
-//     res.json({ id: result.insertId });
-//   });
-// });
+router.post("/api/burgers", async function(req, res) {
+  console.log(req.body.burger_name, req.body.devoured);
+  let result = await burger.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured]);
+  res.json({ id: result.insertId });
+});
 
 // router.put("/api/cats/:id", async function(req, res) {
 //   var condition = "id = " + req.params.id;
