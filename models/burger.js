@@ -1,27 +1,23 @@
 // Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
+const orm = require("../config/orm.js");
 
-var burger = {
-  all: function(tableInput) {
-    orm.all("cats", function(res) {
-      cb(res);
-    });
+const burger = {
+  all: async function() {
+    const results = await orm.all();
+    return results;
   },
   // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("cats", cols, vals, function(res) {
-      cb(res);
-    });
+  create: async function(cols, vals) {
+    const results = await orm.create("burgers", cols, vals);
+    return results;
   },
-  update: function(objColVals, condition, cb) {
-    orm.update("cats", objColVals, condition, function(res) {
-      cb(res);
-    });
+  update: async function(objColVals, condition) {
+    const results = await orm.update("burgers", objColVals, condition);
+    return results;
   },
-  delete: function(condition, cb) {
-    orm.delete("cats", condition, function(res) {
-      cb(res);
-    });
+  delete: async function(condition) {
+    const results = await orm.delete("cats", condition);
+    return results;
   }
 };
 

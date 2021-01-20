@@ -40,8 +40,8 @@ function objToSql(ob) {
 }
 
 var orm = {
-    all: async function(tableInput) {
-      let queryString = `SELECT * FROM ${tableInput};`;
+    all: async function() {
+      let queryString = `SELECT * FROM burgers;`;
       try {
         return connection.query(queryString);
       } catch (error) {
