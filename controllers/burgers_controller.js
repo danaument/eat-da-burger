@@ -6,52 +6,55 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
+router.get("/", async function(req, res) {
   const result = await burger.all()
-  console.log(result);
-  res.render("index", result);
+  let resultObj = {
+    burgers: result
+  };
+  console.log(resultObj);
+  res.render("index", resultObj);
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.create([
-    "name", "sleepy"
-  ], [
-    req.body.name, req.body.sleepy
-  ], function(result) {
-    // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-  });
-});
+// router.post("/api/burgers", async function(req, res) {
+//   burger.create([
+//     "name", "sleepy"
+//   ], [
+//     req.body.name, req.body.sleepy
+//   ], function(result) {
+//     // Send back the ID of the new quote
+//     res.json({ id: result.insertId });
+//   });
+// });
 
-router.put("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+// router.put("/api/cats/:id", async function(req, res) {
+//   var condition = "id = " + req.params.id;
 
-  console.log("condition", condition);
+//   console.log("condition", condition);
 
-  burger.update({
-    sleepy: req.body.sleepy
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
+//   burger.update({
+//     sleepy: req.body.sleepy
+//   }, condition, function(result) {
+//     if (result.changedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
 
-router.delete("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+// router.delete("/api/cats/:id", async function(req, res) {
+//   var condition = "id = " + req.params.id;
 
-  burger.delete(condition, function(result) {
-    if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
+//   burger.delete(condition, function(result) {
+//     if (result.affectedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
 
 // Export routes for server.js to use.
 module.exports = router;
