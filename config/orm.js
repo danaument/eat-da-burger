@@ -48,12 +48,12 @@ var orm = {
         console.log(error);
       };
     },
-    create: async function(table, col, vals) {
-      let queryString = `INSERT INTO ${table} (${col}) VALUES (?,?)`;
+    create: async function(table, name) {
+      let queryString = `INSERT INTO ${table} (burger_name) VALUES ('${name}')`;  //changed schema for devoured to default false because it kept passing "false" as a string instead of a boolean and I got annoyed
   
       console.log(queryString);
       try {
-        return connection.query(queryString, vals);
+        return connection.query(queryString);
       } catch (error) {
         console.log(error);
       };

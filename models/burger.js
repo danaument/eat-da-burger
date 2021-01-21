@@ -8,7 +8,7 @@ const burger = {
   },
   // The variables cols and vals are arrays.
   create: async function(burger_name) {
-    const results = await orm.create("burgers", burger_name, false);
+    const results = await orm.create("burgers", burger_name);
     return results;
   },
   update: async function(objColVals, condition) {

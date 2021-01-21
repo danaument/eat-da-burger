@@ -18,8 +18,8 @@ router.get("/", async function(req, res) {
 });
 
 router.post("/api/burgers", async function(req, res) {
-  console.log(req.body.burger_name, req.body.devoured);
-  let result = await burger.create("burger_name", req.body.burger_name);
+  console.log(req.body.burger_name);
+  let result = await burger.create(req.body.burger_name);
   res.json({ id: result.insertId });
 });
 
