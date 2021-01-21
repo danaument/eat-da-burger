@@ -19,7 +19,7 @@ router.get("/", async function(req, res) {
 
 router.post("/api/burgers", async function(req, res) {
   console.log(req.body.burger_name, req.body.devoured);
-  let result = await burger.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured]);
+  let result = await burger.create("burger_name", req.body.burger_name);
   res.json({ id: result.insertId });
 });
 
@@ -37,7 +37,8 @@ router.put("/api/burgers/:id", async function(req, res) {
 });
 
 router.delete("/api/burgers/:id", async function(req, res) {
-  let result = await burger.delete(req.params.id)
+  let delStr = `id=${req.params.id}`;
+  let result = await burger.delete(delStr);
 
   if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404

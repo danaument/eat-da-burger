@@ -48,15 +48,8 @@ var orm = {
         console.log(error);
       };
     },
-    create: async function(table, cols, vals) {
-      let queryString = "INSERT INTO " + table;
-  
-      queryString += " (";
-      queryString += cols.toString();
-      queryString += ") ";
-      queryString += "VALUES (";
-      queryString += printQuestionMarks(vals.length);
-      queryString += ") ";
+    create: async function(table, col, vals) {
+      let queryString = `INSERT INTO ${table} (${col}) VALUES (?,?)`;
   
       console.log(queryString);
       try {
