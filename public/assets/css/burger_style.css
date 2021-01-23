@@ -1,0 +1,46 @@
+body {
+  background-color: lightgray;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Permanent Marker", cursive;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  width: 22rem;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+}
+
+.fa-hamburger {
+  color: gray;
+}
+
+.card-title {
+  font-family: 'Comfortaa', cursive;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+.jumbotron {
+  background-color: #000033;
+}
+.display-4 {
+  color: #f2f2f2;
+}
+.lead {
+  color: lightgoldenrodyellow;
+}
+
+.border-top {
+    border-top-color:  #000033;
+}

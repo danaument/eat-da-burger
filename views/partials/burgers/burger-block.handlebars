@@ -1,11 +1,14 @@
-<li>
-	{{burger_name}}
+<li class="card text-center text-white bg-dark mb-3">
+	<div class="card-body">
+		<i class="fas fa-hamburger"></i>
+		<h5 class="card-title">{{burger_name}}</h5>
 
-    {{#unless devoured}}
-	<button class="devour" data-id="{{id}}" data-newdevoured="{{newdevoured}}">
-		Eat Da Burger!
-	</button>
-    {{/unless}}
+		{{#unless devoured}}
+		<button class="devour btn btn-secondary" data-id="{{id}}" data-newdevoured="{{newdevoured}}">
+			Eat Da Burger!
+		</button>
+		{{/unless}}
 
-	<button class="delete-burger"  data-id="{{id}}">DELETE</button>
+		<button class="delete-burger btn btn-primary" data-id="{{id}}">Delete</button>
+	</div>
 </li>
