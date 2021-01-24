@@ -9,7 +9,7 @@
 * [License](#License)
 
 ### <a name="Description">Description:</a>
-This project is a full-stack app that demonstrates CRUD functionality using Express.js, Mysql.js, and a custom ORM in a simple MVC framework.  This project serves as a homework assignment submission for UT's web dev coding bootcamp.  It contains a codebase and a deployed webpage.
+This project is a full-stack app that demonstrates CRUD functionality using Express.js, Mysql.js, Handlebars, and a custom ORM in a simple MVC framework.  This project serves as a homework assignment submission for UT's web dev coding bootcamp.  It contains a codebase and a deployed webpage.
 
 ### <a name="Screenshot">Screenshot: </a>
 <img src="./assignmentAssets/eatdaburgerscreenshot.png" width="250x" />
